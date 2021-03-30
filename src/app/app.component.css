@@ -1,0 +1,19 @@
+.container {
+    width: 800px;;
+}
+
+.add-task {
+    margin-bottom: 30px;
+}
+
+.list-task {
+    margin-bottom: 50px;
+}
+
+.btn-add-task {
+    margin-right: 10px;
+}
+
+#list-task, #add-task{
+    border-radius: 20px;;
+}

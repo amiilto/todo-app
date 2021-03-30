@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card list-task" id="list-task">
+    <h5 class="card-header">Lista de Tarefas</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Tarefa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks">
+              <td>{{task.id}}</td>
+              <td>{{task.name}}</td>
+              <td><input type="checkbox">
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editTask(task)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTask(task)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div class="card add-task" id="add-task">
+      <h5 class="card-header">Adicionar/Atualizar Tarefa</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && saveTask(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="task.name" id="name" name="name" #name="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Digite a tarefa">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors.required">Obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-task">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-task" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+</div>
